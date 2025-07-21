@@ -4,6 +4,14 @@ import { notFound } from 'next/navigation';
 import { getSubdomainData } from '@/lib/subdomains';
 import { protocol, rootDomain } from '@/lib/utils';
 
+// Enable ISR with 24 hour cache
+export const revalidate = 86400;
+
+// Enable dynamic params for ISR
+export async function generateStaticParams() {
+  return []; // Return empty array to enable ISR for all paths
+}
+
 export async function generateMetadata({
   params
 }: {
